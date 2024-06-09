@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-75 mx-auto py-3">
+    {% if messages %}
+    {% for message in messages %} {% if message.tags %}
+    <div class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    {% endif %} {% endfor %}
+  {% endif %}
+    <h1 class="fw-bold">Login</h1>
+    <form action="" method="post" class="d-flex flex-column gap-2 py-2" novalidate>
+        {% csrf_token %}
+        <span class=="text-danger">{{form.non_field_errors}}</span>
+        {% for field in form %}
+        {{field.label_tag}}
+        {{field}}
+        <span class="text-danger">{{field.errors}}</span>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary fw-bold py-2">Submit</button>
+    </form>
+</div>
+{% endblock content %}
