@@ -27,7 +27,7 @@ def reset_password(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data["new_password1"])
             user.save()
-            messages.success("Password reset successfully")
+            messages.success(request,"Password reset successfully")
             return redirect("login")
     else:
         form = ResetUserPassword(request)
