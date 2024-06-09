@@ -27,6 +27,16 @@ class UpdatePasswordForm(PasswordChangeForm):
 
 class ResetUserPassword(SetPasswordForm):
     
+    new_password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={"class": "form-control py-2"}),
+    )
+
+    new_password2 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={"class": "form-control py-2"}),
+    )
+
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ["new_password1", "new_password2"]
